@@ -747,10 +747,10 @@ vary@^1, vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-wrap_socket@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/wrap_socket/-/wrap_socket-1.1.0.tgz#d4ca7aee8c7dc4dbec9bc49490c7f15412f43165"
-  integrity sha512-HQhKMHUEykxWpcFAx6oyiOhYMvoPRLsvN3s0MNOrqkc57XsvDp1hRFbXQCIflwJEpXjrtD74z02q7PyuSrN3Xw==
+wrap_socket@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/wrap_socket/-/wrap_socket-1.2.0.tgz#8c1e993465e398eb8f8727b9a56f64a2ab538934"
+  integrity sha512-t1AcaDQKmeVkKKfLvv3j4+ipsKNLdPEt8mM2WiaoKZfKtrvDPSGzpZ4T/gUuBq7POyHt6PXXaoX1TrHtN0A+6w==
   dependencies:
     cors "^2.8.5"
     express "^4.17.1"

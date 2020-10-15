@@ -1,15 +1,12 @@
 {
-  "dependencies": {
-    "mongooo": "^1.1.4",
-    "wrap_socket": "^1.1.0"
-  },
   "name": "pemilo-vote",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Mindpulation/pemilo-vote.git",
   "author": "Reza Andriansyah <technoboth@gmail.com>",
   "license": "MIT",
-  "scripts":{
-    "start": "node index.js"
+  "dependencies": {
+    "mongooo": "^1.1.4",
+    "wrap_socket": "^1.2.0"
   }
 }
