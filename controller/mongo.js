@@ -2,7 +2,7 @@ const { Mongooo, Save, Find } = require('mongooo');
 const { findPage, getCount } = Find;
 const { save } = Save;
 
-const { generateData, getCount, getPage, getParam } = require('./helper');
+const { generateData, getLen, getPage, getParam } = require('./helper');
 
 const mongo = new Mongooo();
 
@@ -13,7 +13,7 @@ let con;
 })();
 
 const saveVote = async (param) => {  
-  const param = generateData(req.body);
+  const param = generateData(param);
   const data  = await save(con, param);  
   return data;
 };
@@ -25,7 +25,7 @@ const total = async (param) => {
 
 const getVote = async (param) => {
   const page  = getPage(param);
-  const count = getCount(param);
+  const count = getLen(param);
   const param2 = getParam(param);
   const data  = await findPage(con, page, count, { codeRoom : param2 }, { idCandidate : 1, date : 1 }, { date : -1 });  
   return (data === null) ? false : data;

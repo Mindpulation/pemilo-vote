@@ -7,7 +7,7 @@ const generateData = (param = {}) => {
   return temp;
 }
 
-const getCount = (param = {}) => {
+const getLen = (param = {}) => {
   return param.count;
 }
 
@@ -19,4 +19,4 @@ const getParam = (data = {}) => {
   return data.param;
 }
 
-module.exports = {generateData, getCount, getPage, getParam};
+module.exports = {generateData, getLen, getPage, getParam};
