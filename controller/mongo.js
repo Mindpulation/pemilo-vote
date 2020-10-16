@@ -13,8 +13,8 @@ let con;
 })();
 
 const saveVote = async (param) => {  
-  const param = generateData(param);
-  const data  = await save(con, param);  
+  const param2 = generateData(param);
+  const data  = await save(con, param2);  
   return data;
 };
 
