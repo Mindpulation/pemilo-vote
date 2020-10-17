@@ -1,6 +1,8 @@
+const { mongoUrl, mongoDB, mongoCol } = require('../env/index');
 const { Mongooo, Save, Find } = require('mongooo');
 const { findPage, getCount } = Find;
 const { save } = Save;
+
 
 const { generateData, getLen, getPage, getParam } = require('./helper');
 
@@ -9,7 +11,7 @@ const mongo = new Mongooo();
 let con;
 
 (async()=>{
-  con = await mongo.setup('mongodb://127.0.0.1:27017/','voteDB', 'vote');
+  con = await mongo.setup(mongoUrl,mongoDB,mongoCol);
 })();
 
 const saveVote = async (param) => {  

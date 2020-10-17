@@ -1,5 +1,3 @@
-const { required } = require("joi");
-
 const { schemaGet, schemaSave, schemaTotal } = require('./schema');
 
 const checkSchemaGet = (param) => {
