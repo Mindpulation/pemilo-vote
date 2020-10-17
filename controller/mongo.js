@@ -27,7 +27,7 @@ const getVote = async (param) => {
   const page  = getPage(param);
   const count = getLen(param);
   const param2 = getParam(param);
-  const data  = await findPage(con, page, count, { codeRoom : param2 }, { idCandidate : 1, date : 1 }, { date : -1 });  
+  const data  = await findPage(con, page, count, param2, { idCandidate : 1, date : 1 }, { date : -1 });  
   return (data === null) ? false : data;
 }
 
