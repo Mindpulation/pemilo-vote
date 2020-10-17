@@ -10,7 +10,7 @@ const mongo = new Mongooo();
 
 let con;
 
-(async()=>{
+(async()=>{  
   con = await mongo.setup(mongoUrl,mongoDB,mongoCol);
 })();
 
