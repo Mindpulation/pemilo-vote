@@ -7,7 +7,7 @@ const app = new Route();
 app.add('sendVote', async (io, eng, param)=>{
   if(checkSchemaSave(param)){
     await saveVote(param);
-    eng.to(param.room).emit('getVote', {idCandidate:param.idCandidate, date:param.date});
+    eng.to(param.room).emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
   }
   else{console.log("Format Salah");}
 });
