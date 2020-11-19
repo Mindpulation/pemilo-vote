@@ -11,6 +11,6 @@ const app = svr.net();
 app.use('/api/vote', voteHttp);
 svr.use(voteEngine);
 
-//app.all('*',(req, res)=>{res.send({result:"Fuck you!!"});});
+app.all('*',(req, res)=>{res.send({result:"Fuck you!!"});});
 
 svr.listen();
