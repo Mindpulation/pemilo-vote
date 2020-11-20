@@ -5,6 +5,7 @@ const { Route } = require('wrap_socket');
 const app = new Route();
 
 app.add('sendVote', async (io, eng, param)=>{
+  console.log("Ke hit nih");
   if(checkSchemaSave(param)){
     await saveVote(param);
     eng.to(param.room).emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
