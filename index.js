@@ -21,6 +21,7 @@ io.on("connection", (socket)=>{
   });
 
   socket.on("sendVote", async (param)=>{
+    console.log("Ke Hit Nih");
     if(checkSchemaSave(param)){
       await saveVote(aram);
       socket.emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
