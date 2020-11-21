@@ -1,15 +1,33 @@
-const voteEngine = require('./view/engine/vote');
-//const voteHttp = require('./view/http/vote');
-
-const { Engine } = require('wrap_socket');
 const { port } = require('./env/index');
+const { checkSchemaSave } = require('./validator/index');
+const { saveVote } = require('./controller/mongo');
 
-const svr = new Engine(port);
-//const app = svr.net();
+const app = require('express')();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http, {
+  cors:{
+    origin : "*"
+  }
+});
 
-//app.use('/api/vote', voteHttp);
-svr.use(voteEngine);
+const cors = require('cors');
 
-//app.all('*',(req, res)=>{res.send({result:"Fuck you!!"});});
+app.use(cors);
 
-svr.listen();
+io.on("connection", (socket)=>{
+
+  socket.on("test", ()=>{
+    console.log("Test berhasil - I love you!");
+  });
+
+  socket.on("sendVote", async (param)=>{
+    if(checkSchemaSave(param)){
+      await saveVote(aram);
+      socket.emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
+    }
+    else{console.log("Salah Format");}
+  });
+
+});
+
+http.listen(port);
