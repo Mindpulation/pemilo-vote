@@ -1,5 +1,6 @@
 const { mongoUrl, mongoDB, mongoCol } = require('../env/index');
 const { Mongooo, Save, Find } = require('mongooo');
+const { find } = require('mongooo').Find;
 const { findPage, getCount } = Find;
 const { save } = Save;
 
@@ -33,6 +34,11 @@ const getVote = async (param) => {
   return (data === null) ? false : data;
 }
 
-module.exports = { saveVote, total, getVote };
+const finds = async (param) => {
+  const data = await find(con, {codeRoom : param}, {idCandidate: 1, emailAnggota: 1});
+  return data;
+}
+
+module.exports = { saveVote, total, getVote, finds };
 
 

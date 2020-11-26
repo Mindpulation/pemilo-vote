@@ -1,6 +1,6 @@
 const { port } = require('./env/index');
 const { checkSchemaSave } = require('./validator/index');
-const { saveVote } = require('./controller/mongo');
+const { saveVote, finds } = require('./controller/mongo');
 
 const app = require('express')();
 const http = require('http').createServer(app);
@@ -13,6 +13,18 @@ const io = require('socket.io')(http, {
 const cors = require('cors');
 
 app.use(cors);
+
+app.post('/total_vote', async (req, res) => {
+  const codeRoom = req.body.codeRoom;
+  const data = await finds(codeRoom);
+  var arr = [];
+  for (var i = 0; i < data.length; i++) {
+    arr.push(data[i].idCandidate)
+  }
+  var count = {};
+  arr.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+  res.send(count)
+});
 
 io.on("connection", (socket)=>{
 
