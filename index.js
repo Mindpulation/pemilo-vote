@@ -1,3 +1,5 @@
+var StatsD = require('hot-shots');
+var dogstatsd = new StatsD();
 const { port } = require('./env/index');
 const { checkSchemaSave } = require('./validator/index');
 const { saveVote, finds } = require('./controller/mongo');
@@ -32,9 +34,10 @@ io.on("connection", (socket)=>{
     console.log("Test berhasil - I love you!");
   });
 
-  socket.on("sendVote", async (param)=>{
+  socket.on("sendVote", async (param)=>{	
     console.log("Ke Hit Nih");
     if(checkSchemaSave(param)){
+      dogstatsd.increment('page.views') 	
       await saveVote(aram);
       socket.emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
     }
