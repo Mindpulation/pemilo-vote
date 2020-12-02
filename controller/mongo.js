@@ -39,6 +39,10 @@ const finds = async (param) => {
   return data;
 }
 
-module.exports = { saveVote, total, getVote, finds };
+const getLenVote  = async(param) => {
+  return await getCount(con, param);
+}
+
+module.exports = { saveVote, total, getVote, finds, getLenVote };
 
 

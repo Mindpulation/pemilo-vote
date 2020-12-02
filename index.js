@@ -1,8 +1,8 @@
 const { port } = require('./env/index');
 const { checkSchemaSave } = require('./validator/index');
-const { saveVote, finds } = require('./controller/mongo');
-
-const app = require('express')();
+const { saveVote, finds, getLenVote } = require('./controller/mongo');
+const express = require('express');
+const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
   cors:{
@@ -12,18 +12,19 @@ const io = require('socket.io')(http, {
 
 const cors = require('cors');
 
-app.use(cors);
+app.use(cors());
+app.use(express.json());
+
 
 app.post('/total_vote', async (req, res) => {
   const codeRoom = req.body.codeRoom;
-  const data = await finds(codeRoom);
-  var arr = [];
-  for (var i = 0; i < data.length; i++) {
-    arr.push(data[i].idCandidate)
+  const idCandidate = req.body.idCandidate;
+  const ob = {
+    codeRoom,
+    idCandidate
   }
-  var count = {};
-  arr.forEach(function(i) { count[i] = (count[i]||0) + 1;});
-  res.send(count)
+  const len = getLenVote(ob);
+  res.send({count:len});
 });
 
 io.on("connection", (socket)=>{
