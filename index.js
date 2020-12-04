@@ -1,5 +1,3 @@
-var StatsD = require('hot-shots');
-var dogstatsd = new StatsD();
 const { port } = require('./env/index');
 const { checkSchemaSave } = require('./validator/index');
 const { saveVote, finds, getLenVote } = require('./controller/mongo');
