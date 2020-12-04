@@ -37,13 +37,8 @@ io.on("connection", (socket)=>{
 
   socket.on("sendVote", async (param)=>{	
     console.log("Ke Hit Nih");
-    if(checkSchemaSave(param)){
-<<<<<<< HEAD
-      dogstatsd.increment('page.views') 	
-      await saveVote(aram);
-=======
+    if(checkSchemaSave(param)){      
       await saveVote(param);
->>>>>>> f5863200ec0292ce4f507bc26233a498dd6558ff
       socket.emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
     }
     else{console.log("Salah Format");}
