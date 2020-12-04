@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 
-app.post('/total_vote', async (req, res) => {
+app.post('/total', async (req, res) => {
   const codeRoom = req.body.codeRoom;
   const idCandidate = req.body.idCandidate;
   const ob = {
@@ -36,7 +36,7 @@ io.on("connection", (socket)=>{
   socket.on("sendVote", async (param)=>{
     console.log("Ke Hit Nih");
     if(checkSchemaSave(param)){
-      await saveVote(aram);
+      await saveVote(param);
       socket.emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
     }
     else{console.log("Salah Format");}
