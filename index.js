@@ -25,8 +25,8 @@ app.post('/total', async (req, res) => {
     codeRoom,
     idCandidate
   }
-  const len = getLenVote(ob);
-  res.send({count:len});
+  const len = await getLenVote(ob);
+  res.send(len);
 });
 
 io.on("connection", (socket)=>{
