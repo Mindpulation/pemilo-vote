@@ -37,7 +37,7 @@ io.on("connection", (socket)=>{
     console.log("Ke Hit Nih");
     if(checkSchemaSave(param)){      
       await saveVote(param);
-      socket.emit('getVote', {idCandidate:param.idCandidate, date:new Date()});
+      io.emit('getVote');
     }
     else{console.log("Salah Format");}
   });
