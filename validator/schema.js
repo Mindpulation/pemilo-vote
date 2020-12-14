@@ -1,7 +1,7 @@
 const joi = require('joi');
 
 const schemaSave = joi.object().keys({
-  emailAnggota : joi.string().required(),
+  codeTicket : joi.string().required(),
   codeRoom : joi.string().required(),
   idCandidate : joi.string().required()
 });
