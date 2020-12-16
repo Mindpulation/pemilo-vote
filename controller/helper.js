@@ -1,6 +1,6 @@
 const generateData = (param = {}) => {
   let temp          = {};
-  temp.emailAnggota = param.emailAnggota;
+  temp.codeTicket   = param.codeTicket;
   temp.codeRoom     = param.codeRoom;
   temp.idCandidate  = param.idCandidate;
   temp.date         = new Date();
