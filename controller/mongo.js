@@ -17,6 +17,7 @@ let con;
 
 const saveVote = async (param) => {  
   const param2 = generateData(param);
+  console.log(param2);
   const data  = await save(con, param2);  
   return data;
 };
